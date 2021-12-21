@@ -15,7 +15,7 @@ class bcolors:
 
 
 def printStartClusters(clusters: List[Cluster]) -> None:
-    print("\nStart: " + ", ".join(map(str, clusters)) + "\n")
+    print("\nStart: " + ", ".join(map(showAsCluster, clusters)) + "\n")
 
 def printCurrentClusters(current_step: int, joined_position: int, clusters: List[Cluster]) -> None:
     output = f"{current_step}. Step: "

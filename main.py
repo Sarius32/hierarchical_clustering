@@ -1,21 +1,14 @@
+from typing import List
+from calculations import distanceBetween, maxDistance
 from cluster import Cluster
 from io_utils import printCurrentClusters, printStartClusters
 
 
-points = [1, 4, 9, 25, 16, 32, 63, 81, 100, 121, 144]
-points.sort()
-
-
-def main() -> None:
+def main(clusters: List[Cluster]) -> None:
     step = 1
-
-    clusters = []
-    for point in points:
-        clusters.append(Cluster(point))
-
     printStartClusters(clusters)
 
-    max_distance = abs(points[0] - points[-1])
+    max_distance = maxDistance(clusters)
     while(len(clusters) > 2):
         distances = []
         for a in range(len(clusters)):
@@ -24,7 +17,7 @@ def main() -> None:
                 if a == b:
                     continue
 
-                dis = clusters[a].calcDistance(clusters[b])
+                dis = distanceBetween(clusters[a], clusters[b])
                 if dis < min_distance[1]:
                     min_distance = (b, dis)
             
@@ -47,4 +40,13 @@ def main() -> None:
 
     printCurrentClusters(step, 0, clusters)
 
-main()
+
+if __name__ == "__main__":
+    points = [1, 4, 9, 25, 16, 32, 63, 81, 100, 121, 144]
+    points.sort()
+
+    clusters = []
+    for point in points:
+        clusters.append(Cluster(point))
+
+    main(clusters)
