@@ -15,7 +15,8 @@ class bcolors:
 
 
 def printStartClusters(clusters: List[Cluster]) -> None:
-    print("\nStart: " + ", ".join(map(showAsCluster, clusters)) + "\n")
+    print(f"\n{bcolors.UNDERLINE}Start:{bcolors.ENDC} " + ", ".join(map(showAsCluster, clusters)) + "\n")
+
 
 def printCurrentClusters(current_step: int, joined_position: int, clusters: List[Cluster]) -> None:
     output = f"{current_step}. Step: "
@@ -27,6 +28,11 @@ def printCurrentClusters(current_step: int, joined_position: int, clusters: List
         if i != len(clusters)-1:
             output += "; "
     print(output, end="\n\n")
+
+
+def printEndCluster(clusters: List[Cluster]) -> None:
+    print(f"{bcolors.UNDERLINE}End:{bcolors.ENDC}{bcolors.FAIL} " + ", ".join(map(showAsCluster, clusters)) + f"{bcolors.ENDC}\n")
+
 
 def showAsCluster(cluster: Cluster) -> str:
     return "{" + ", ".join(map(str, cluster.numbers)) + "}"
