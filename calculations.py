@@ -9,17 +9,3 @@ def distanceBetween(cluster_a: Cluster, cluster_b: Cluster) -> int:
             if abs(number - check) > distance:
                 distance = abs(number - check)
     return distance
-
-
-def maxDistance(clusters: List[Cluster]) -> int:
-    distance: int
-    for index_a, cluster_a in enumerate(clusters):
-        for index_b, cluster_b in enumerate(clusters):
-            if index_a == 0 and index_b == 1:
-                distance = distanceBetween(cluster_a, cluster_b)
-            elif index_a != index_b:
-                dis = distanceBetween(cluster_a, cluster_b)
-                if dis > distance:
-                    distance = dis
-    
-    return distance

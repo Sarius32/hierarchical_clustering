@@ -1,5 +1,7 @@
 from typing import List
-from calculations import distanceBetween, maxDistance
+import sys
+
+from calculations import distanceBetween
 from cluster import Cluster
 from io_utils import printCurrentClusters, printEndCluster, printStartClusters
 
@@ -34,7 +36,10 @@ def main(clusters: List[Cluster]) -> None:
 
 
 if __name__ == "__main__":
-    points = [1, 4, 9, 25, 16, 32, 63, 81, 100, 121, 144]
+    if len(sys.argv) > 1:
+        points = [*map(int, sys.argv[1:])]
+    else:
+        points = [1, 4, 9, 25, 16, 32, 63, 81, 100, 121, 144]
     points.sort()
 
     clusters = []
